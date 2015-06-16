@@ -6,9 +6,12 @@ ENV SICKBEARD_VERSION master
 RUN apt-get -q update &&\
     apt-get install -qy --force-yes python-cheetah && \
     curl -L https://github.com/midgetspy/Sick-Beard/tarball/$SICKBEARD_VERSION -o sickbeard.tgz && \
-    tar -xvf sickbeard.tgz -C /  &&\
-    mv /midgetspy-Sick-Beard-* /sickbeard/ &&\
+    tar -xvf sickbeard.tgz -C /  && \
+    mv /midgetspy-Sick-Beard-* /sickbeard/ && \
     rm  /sickbeard.tgz && \
+	apt-get install -qy python-pip && \
+	pip install BeautifulSoup && \
+	pip install periscope && \ 
     apt-get -y autoremove && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/* && \
